@@ -25,6 +25,7 @@ func NewServeLogic(ctx context.Context, svcCtx *svc.ServiceContext) *ServeLogic 
 
 func (l *ServeLogic) Serve(req *types.Request) (resp *types.Response, err error) {
 	// todo: add your logic here and delete this line
-
-	return
+   return &types.Response{
+        Message: "Hello go-zero",
+    }, nil
 }
