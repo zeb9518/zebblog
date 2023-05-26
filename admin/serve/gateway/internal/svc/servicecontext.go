@@ -1,7 +1,7 @@
 package svc
 
 import (
-	"serve/blog/internal/config"
+	"serve/gateway/internal/config"
 )
 
 type ServiceContext struct {

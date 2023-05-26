@@ -3,10 +3,10 @@ package handler
 import (
 	"net/http"
 
-	"blog/internal/logic"
-	"blog/internal/svc"
-	"blog/internal/types"
 	"github.com/zeromicro/go-zero/rest/httpx"
+	"serve/blog/internal/logic"
+	"serve/blog/internal/svc"
+	"serve/blog/internal/types"
 )
 
 func BlogHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {

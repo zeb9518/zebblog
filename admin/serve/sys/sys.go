@@ -4,9 +4,9 @@ import (
 	"flag"
 	"fmt"
 
-	"sys/internal/config"
-	"sys/internal/handler"
-	"sys/internal/svc"
+	"serve/sys/internal/config"
+	"serve/sys/internal/handler"
+	"serve/sys/internal/svc"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/rest"

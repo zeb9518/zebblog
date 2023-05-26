@@ -1,3 +1,17 @@
 Name: sys-api
 Host: 0.0.0.0
-Port: 8888
+Port: 8980
+
+# Mysql数据库配置
+Mysql:
+  DataSource: root:123456@tcp(127.0.0.1:3306)/zebblog?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+
+# 缓存配置
+CacheRedis:
+  - Host: 127.0.0.1:6379
+    Pass:
+    Type: node
+
+# JWT配置
+jwt:
+  signingKey: JppugXCt5nTTFXXFAPKAJ5FXAvy6UeMU
