@@ -6,7 +6,7 @@ type Response {
 	Message string `json:"message"`
 }
 
-service serve-api {
-	@handler ServeHandler
+service blog-api {
+	@handler BlogHandler
 	get /from/:name(Request) returns (Response)
 }

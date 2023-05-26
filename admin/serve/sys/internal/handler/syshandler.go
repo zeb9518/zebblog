@@ -4,12 +4,12 @@ import (
 	"net/http"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
-	"serve/internal/logic"
-	"serve/internal/svc"
-	"serve/internal/types"
+	"sys/internal/logic"
+	"sys/internal/svc"
+	"sys/internal/types"
 )
 
-func ServeHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func SysHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var req types.Request
 		if err := httpx.Parse(r, &req); err != nil {
@@ -17,8 +17,8 @@ func ServeHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			return
 		}
 
-		l := logic.NewServeLogic(r.Context(), svcCtx)
-		resp, err := l.Serve(&req)
+		l := logic.NewSysLogic(r.Context(), svcCtx)
+		resp, err := l.Sys(&req)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 		} else {
