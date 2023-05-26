@@ -11,7 +11,8 @@ type Config struct {
 		DataSource string
 	}
 	CacheRedis cache.ClusterConf
-	Jwt        struct {
-		SigningKey string
+	Auth       struct {
+		AccessSecret string
+		AccessExpire int64
 	}
 }

@@ -12,6 +12,7 @@ CacheRedis:
     Pass:
     Type: node
 
-# JWT配置
-jwt:
-  signingKey: JppugXCt5nTTFXXFAPKAJ5FXAvy6UeMU
+# 授权配置
+Auth:
+  AccessSecret: JppugXCt5nTTFXXFAPKAJ5FXAvy6UeMU
+  AccessExpire: 86400
