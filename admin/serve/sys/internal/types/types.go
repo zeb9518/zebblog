@@ -20,15 +20,17 @@ type RegisterReq struct {
 	Password string `json:"password"`
 }
 
-type UserReply struct {
+type LoginRep struct {
 	Auid     int64  `json:"auid"`
 	Uid      int64  `json:"uid"`
-	Beid     int64  `json:"beid"`  //应用id
-	Ptyid    int64  `json:"ptyid"` //对应平台
 	Username string `json:"username"`
 	Mobile   string `json:"mobile"`
 	Nickname string `json:"nickname"`
 	Openid   string `json:"openid"`
 	Avator   string `json:"avator"`
-	Gender   string `json:"gender"`
+}
+
+type RegisterRep struct {
+	Auid int64 `json:"auid"`
+	Uid  int64 `json:"uid"`
 }

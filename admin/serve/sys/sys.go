@@ -20,7 +20,9 @@ func main() {
 	var c config.Config
 	conf.MustLoad(*configFile, &c)
 
-	server := rest.MustNewServer(c.RestConf)
+	server := rest.MustNewServer(c.RestConf, rest.WithCors())
+	//单个域名的情况：
+	//srv := rest.MustNewServer(c.RestConf, rest.WithCors("http://example.com"))
 	defer server.Stop()
 
 	ctx := svc.NewServiceContext(c)

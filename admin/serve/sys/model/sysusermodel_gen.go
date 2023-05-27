@@ -28,6 +28,7 @@ type (
 	sysUserModel interface {
 		Insert(ctx context.Context, data *SysUser) (sql.Result, error)
 		FindOne(ctx context.Context, id string) (*SysUser, error)
+		FindOneByUsername(ctx context.Context, username string) (*SysUser, error)
 		FindUser(username string, password string) (*SysUser, error)
 		Update(ctx context.Context, data *SysUser) error
 		Delete(ctx context.Context, id string) error
@@ -77,6 +78,24 @@ func (m *defaultSysUserModel) FindOne(ctx context.Context, id string) (*SysUser,
 	err := m.QueryRowCtx(ctx, &resp, zebblogSysUserIdKey, func(ctx context.Context, conn sqlx.SqlConn, v any) error {
 		query := fmt.Sprintf("select %s from %s where `id` = ? limit 1", sysUserRows, m.table)
 		return conn.QueryRowCtx(ctx, v, query, id)
+	})
+	switch err {
+	case nil:
+		return &resp, nil
+	case sqlc.ErrNotFound:
+		return nil, ErrNotFound
+	default:
+		return nil, err
+	}
+}
+
+// FindOneByUsername 根据用户名查询用户
+func (m *defaultSysUserModel) FindOneByUsername(ctx context.Context, username string) (*SysUser, error) {
+	zebblogSysUserIdKey := fmt.Sprintf("%s%v", cacheZebblogSysUserIdPrefix, username)
+	var resp SysUser
+	err := m.QueryRowCtx(ctx, &resp, zebblogSysUserIdKey, func(ctx context.Context, conn sqlx.SqlConn, v any) error {
+		query := fmt.Sprintf("select %s from %s where `username` = ? limit 1", sysUserRows, m.table)
+		return conn.QueryRowCtx(ctx, v, query, username)
 	})
 	switch err {
 	case nil:
